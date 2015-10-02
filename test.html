@@ -1,0 +1,95 @@
+<html>
+<head>
+<script>
+function add1() {
+    var counter = 0;
+    function plus() {counter += 1;}
+    plus();    
+    return counter; 
+}
+var add = (function () {
+    var counter = 0;
+    return function () {
+    	return counter += 1;
+    	console.log("add");
+    	}
+})();
+
+console.log(add());
+console.log(add());
+console.log(add());
+
+function celebrityIDCreator (theCelebrities) {
+    var i;
+    var uniqueID = 100;
+    for (i = 0; i < theCelebrities.length; i++) {
+      theCelebrities[i]["id"] = function (i)  {
+        return uniqueID + i;
+      }(i);
+    }
+    
+    return theCelebrities;
+}
+var actionCelebs = [{name:"Stallone", id:0}, {name:"Cruise", id:0}, {name:"Willis", id:0}];
+var createIdForActionCelebs = celebrityIDCreator (actionCelebs);
+var stalloneID = createIdForActionCelebs [0];
+console.log(stalloneID.id);
+
+
+//All the code is wrapped in the IIFE
+(function () {
+var firstName = 'Richard';
+function init () { doStuff (firstName); 
+// code to start the application
+}
+function doStuff () { // Do stuff her
+	console.log('doStuff'); 
+	}
+function doMoreStuff () { // Do more stuff here
+	console.log('doMoreStuff'); 
+	}
+// Start the application 
+ init (); }) ();
+ 
+ 
+var myFunction = new Function("a", "b", "return a * b");
+
+console.log(myFunction(4, 3));
+var  tooe = 7;
+console.log("to : " + (tooe<<1));
+console.log("to : " + (tooe>>1));
+var global = this;
+
+var sillyFunction = function (recursed) {
+    if (recursed) { return arguments.callee(true); }
+    if (this !== global) {
+    	console.log("This is: " + this);
+    } else {
+    	console.log("This is the global");"/Users/rebeccahuang/Downloads/aol.html"
+    }
+}
+
+sillyFunction();
+
+var o;
+console.log(typeof(o));
+
+var b = null;
+console.log(typeof(b));
+function test(){
+	for(var i = 0; i < 3; i++){
+		
+		setTimeout(
+				function(i){console.log(i);}(i), 1000);
+		
+	};
+};
+	
+	test();
+
+
+</script>
+</head>
+<body>
+</body>
+</html>
